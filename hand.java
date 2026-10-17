@@ -24,6 +24,15 @@ public class hand {
         return fingers;
     }
 
+    public void resetFingers() {
+        fingers = 1;
+        if (topbottom == 2) {
+            loadImage("Counting1.png");
+        } else if (topbottom == 1) {
+            loadImage("Counting1top.png");
+        }
+    }
+
     public BufferedImage getImage() {
         return image;
     }

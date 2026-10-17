@@ -17,9 +17,10 @@ public class main {
     JLabel titleNameLabel, player1LeftLabel, player1RightLabel, player2LeftLabel, player2RightLabel, GameOverLabel, player1TitleLabel, player2TitleLabel;
     Font titleFont = new Font("Consolas", Font.PLAIN, 90);
     Font normalFont = new Font("Consolas", Font.PLAIN, 20);
+    Font gameOverFont = new Font("Consolas", Font.PLAIN, 55);
     JButton startButton, oneLeft_TwoLeft, oneLeft_TwoRight, oneRight_TwoLeft, oneRight_TwoRight, twoLeft_OneLeft, twoLeft_OneRight, 
     twoRight_OneLeft, twoRight_OneRight, player1TransferButton, player2TransferButton, one_LtoR, one_RtoL, two_LtoR, two_RtoL, one_endTurn, 
-    two_endTurn;
+    two_endTurn, restartButton;
     hand player1LeftHand = new hand(1);
     hand player1RightHand = new hand(1);
     hand player2LeftHand = new hand(2);
@@ -220,13 +221,30 @@ public class main {
         con.add(player2RightButtonPanel);
 
         GameOverPanel = new JPanel();
-        GameOverPanel.setBounds(150, 237, 500, 100);
+        GameOverPanel.setBounds(250, 245, 300, 150);
         GameOverPanel.setBackground(Color.DARK_GRAY);
         GameOverLabel = new JLabel("GAME OVER");
         GameOverLabel.setForeground(Color.white);
-        GameOverLabel.setFont(titleFont);
+        GameOverLabel.setFont(gameOverFont);
         GameOverPanel.add(GameOverLabel);
         con.add(GameOverPanel);
+
+        restartButton = new JButton("Restart");
+        restartButton.setBackground(Color.black);
+        restartButton.setForeground(Color.white);
+        restartButton.setFont(normalFont);
+        restartButton.addActionListener(e -> {
+            player1LeftHand.resetFingers();
+            player1RightHand.resetFingers();
+            player2LeftHand.resetFingers();
+            player2RightHand.resetFingers();
+            player1LeftLabel.setIcon(new ImageIcon(player1LeftHand.getImage()));
+            player1RightLabel.setIcon(new ImageIcon(player1RightHand.getImage()));
+            player2LeftLabel.setIcon(new ImageIcon(player2LeftHand.getImage()));
+            player2RightLabel.setIcon(new ImageIcon(player2RightHand.getImage()));
+            switchTurn(2);
+        });
+        GameOverPanel.add(restartButton);
 
         player1TransferPanel = new JPanel();
         player1TransferPanel.setBounds(300, 100, 200, 50);
