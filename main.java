@@ -415,6 +415,9 @@ public class main {
             else if (player2LeftHand.getFingers() == 4 && player2RightHand.getFingers() == 3) {
                 player2TransferPanel.setVisible(false);
             }
+            else if (player2LeftHand.getFingers() == 4 && player2RightHand.getFingers() == 4) {
+                player2TransferPanel.setVisible(false);
+            }
             else {
             player2TransferPanel.setVisible(true);}
 
@@ -438,6 +441,9 @@ public class main {
                 player1TransferPanel.setVisible(false);
             }
             else if (player1LeftHand.getFingers() == 4 && player1RightHand.getFingers() == 3) {
+                player1TransferPanel.setVisible(false);
+            }
+            else if (player1LeftHand.getFingers() == 4 && player1RightHand.getFingers() == 4) {
                 player1TransferPanel.setVisible(false);
             }
             else {
